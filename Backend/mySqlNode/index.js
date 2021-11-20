@@ -50,27 +50,35 @@ app.delete("/api/v1/employees/:id", (req, res) => {
 
 app.post("/api/v1/employees/", async (req, res) => {
   const data = {
-    name: req.body.name,
+    empname: req.body.empname,
     designation: req.body.designation,
     email: req.body.email,
-    phone: req.body.phone,
-    doj: req.body.doj,
-    rno: req.body.rno,
-    salary: req.body.salary,
+    age: req.body.age,
+    telephone: req.body.telephone,
+    roleIncharge: req.body.roleIncharge,
+    date_of_joining: req.body.date_of_joining,
+    registrationNo: req.body.registrationNo,
     empcode: req.body.empcode,
+    password: req.body.password,
+    department: req.body.department,
+    address: req.body.address,
   };
 
   mysqlConnection.query(
-    `INSERT INTO employee (name, designation , email , phone , doj , rno, salary, empcode) VALUES (?,?,?,?,?,?,?,?)`,
+    `INSERT INTO employee (empname, designation , email ,age, telephone ,roleIncharge,date_of_joining  , registrationNo,  empcode , password,department,address) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`,
     [
-      data.name,
+      data.empname,
       data.designation,
       data.email,
-      data.phone,
-      data.doj,
-      data.rno,
-      data.salary,
+      data.age,
+      data.telephone,
+      data.roleIncharge,
+      data.date_of_joining,
+      data.registrationNo,
       data.empcode,
+      data.password,
+      data.department,
+      data.address,
     ],
     (err, rows, fields) => {
       if (!err) res.send(`${rows} Data Sent Successfully`);
